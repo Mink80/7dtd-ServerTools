@@ -724,6 +724,11 @@ namespace ServerTools
                                 {
                                     ChatMessage(_cInfo, LoadConfig.Chat_Response_Color + _commands6, _senderId, LoadConfig.Server_Response_Name, EChatType.Global, null);
                                 }
+
+                                // ModChallenge fix:
+                                ChatMessage(_cInfo, LoadConfig.Chat_Response_Color + "More Commands: /challenge, /challenges", _senderId, LoadConfig.Server_Response_Name, EChatType.Global, null);
+                                //--
+
                                 if (CustomCommands.IsEnabled)
                                 {
                                     if (_commandsCustom.EndsWith("Custom commands are:"))
@@ -764,6 +769,11 @@ namespace ServerTools
                                 {
                                     ChatMessage(_cInfo, LoadConfig.Chat_Response_Color + _commands6, _senderId, LoadConfig.Server_Response_Name, EChatType.Whisper, null);
                                 }
+
+                                //ModChallenge fix:
+                                ChatMessage(_cInfo, LoadConfig.Chat_Response_Color + "More Commands: /challenge, /challenges", _senderId, LoadConfig.Server_Response_Name, EChatType.Whisper, null);
+                                //-
+
                                 if (CustomCommands.IsEnabled)
                                 {
                                     if (!_commandsCustom.EndsWith("Custom commands are:"))

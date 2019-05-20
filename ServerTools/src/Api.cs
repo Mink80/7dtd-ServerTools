@@ -444,6 +444,11 @@ namespace ServerTools
 
         public bool ChatMessage(ClientInfo _cInfo, EChatType _type, int _senderId, string _msg, string _mainName, bool _localizeMain, List<int> _recipientEntityIds)
         {
+            // ModChallenge fix-
+            if (_msg.StartsWith("/challenge") || _msg.StartsWith("/Challenge"))
+                return false;
+            //-
+
             return ChatHook.Hook(_cInfo, _type, _senderId, _msg, _mainName, _localizeMain, _recipientEntityIds);
         }
 
