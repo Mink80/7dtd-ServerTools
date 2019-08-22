@@ -283,7 +283,11 @@ namespace ServerTools
                     }
                     else
                     {
+                        // Path to give random reward
                         ItemOrBlockCounter(_cInfo, Reward_Count);
+
+                        // added additional xp gain buff as voting reward
+                      _cInfo.SendPackage(new NetPackageConsoleCmdClient("buff " + "VotingBuff", true));
                     }
                 }
                 else
@@ -307,7 +311,7 @@ namespace ServerTools
             string _phrase700;
             if (!Phrases.Dict.TryGetValue(700, out _phrase700))
             {
-                _phrase700 = "Your vote has not been located {PlayerName}. Make sure you voted @ {VoteSite} and try again.";
+                _phrase700 = "Your vote has not been located {PlayerName}. Make sure you voted at {VoteSite} and try again.";
             }
             _phrase700 = _phrase700.Replace("{PlayerName}", _cInfo.playerName);
             _phrase700 = _phrase700.Replace("{VoteSite}", Your_Voting_Site);
@@ -429,6 +433,7 @@ namespace ServerTools
                 }
                 ItemValue _itemValue = new ItemValue(ItemClass.GetItem(_item).type, quality, quality, false, default(FastTags), 1);
                 Give(_cInfo, _itemValue, _count);
+                ChatHook.ChatMessage(_cInfo, ChatHook.Player_Name_Color + _cInfo.playerName + LoadConfig.Chat_Response_Color + " got a nice reward for voting: " + _count.ToString() + " " + _itemValue.ItemClass.GetLocalizedItemName() + (_itemValue.Quality == 0 ? "" : " (quality " + _itemValue.Quality + ")") + "[-]", _cInfo.entityId, LoadConfig.Server_Response_Name, EChatType.Global, null);
             }
         }
 
